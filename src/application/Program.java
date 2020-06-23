@@ -24,24 +24,27 @@ public class Program {
 		for (Seller sel : list) {
 			System.out.println(sel);
 
-		System.out.println("\n=== Teste 3: seller findAll ===");
-		list = sellerDao.findAll();
-		for (Seller l : list) {
-			System.out.println(l);
-		}
-		
-		System.out.println("\n == Teste 4: seller insert ====");
-		Seller newSeller = new Seller(null, "Greg", "greg@gmail.com", new Date(), 1000.00, department);
-		sellerDao.insert(newSeller);
-		System.out.println("Inserted! New id = " + newSeller.getId());
-		}
-		
-		System.out.println("\n == Teste 5: seller update ====");
-		seller = sellerDao.findById(1);
-		seller.setEmail("Martha@gmail.com");
-		sellerDao.update(seller);
-		System.out.println("Update completed");
-		
+			 System.out.println("\n=== Teste 3: seller findAll ===");
+			 list = sellerDao.findAll();
+			 for (Seller l : list) {
+			 System.out.println(l);
+			 }
+
+			 System.out.println("\n == Teste 4: seller insert ====");
+			 Seller newSeller = new Seller(null, "Greg", "greg@gmail.com", new Date(),
+			 1000.00, department);
+			 sellerDao.insert(newSeller);
+			 System.out.println("Inserted! New id = " + newSeller.getId());
+			 }
+
+			System.out.println("\n == Teste 5: seller update ====");
+			seller = sellerDao.findById(1);
+			seller.setEmail("Martha@gmail.com");
+			sellerDao.update(seller);
+			System.out.println("Update completed");
+
+			System.out.println("\n == Teste 6: seller delete ====");
+			sellerDao.deleteById(1000);
+			System.out.println("Delete completed");
 		}
 	}
-
