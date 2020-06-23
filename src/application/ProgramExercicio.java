@@ -25,6 +25,16 @@ public class ProgramExercicio {
 		departmentDao.deleteById(5);
 		System.out.println("Delete completed");
 		
+		System.out.println("\n===Teste 4: Implementing findByUpdate ===");
+		department = departmentDao.findById(1);
+		department.setName("computers");
+		departmentDao.update(department);
+		System.out.println("Update completed");
+		
+		System.out.println("\n===Teste 5: Implementing findByInsert ===");
+		Department newDepartment = new Department(null, "RAFAEL");
+		departmentDao.insert(newDepartment);
+		System.out.println("Inserted!");
 		
 		
 	}
