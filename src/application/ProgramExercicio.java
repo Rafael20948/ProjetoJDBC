@@ -20,5 +20,12 @@ public class ProgramExercicio {
 		for (Department l : list) {
 			System.out.println(l);
 		}
+		
+		System.out.println("\n===Teste 3: Implementing findByDelete ===");
+		departmentDao.deleteById(5);
+		System.out.println("Delete completed");
+		
+		
+		
 	}
 }

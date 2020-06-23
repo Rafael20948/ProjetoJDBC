@@ -34,8 +34,21 @@ public class DepartmentDaoJDBC implements DepartmentDao {
 
 	@Override
 	public void deleteById(Integer id) {
-		// TODO Auto-generated method stub
+		PreparedStatement st = null;
+		try {
+			
+			st = conn.prepareStatement("delete from department"
+					+ " where id = ?");
+			
+			st.setInt(1, id);
+			
+			st.executeUpdate();
 
+		} catch (SQLException e) {
+			throw new DbException(e.getMessage());
+		} finally {
+			DB.closeStatement(st);
+		}
 	}
 
 	@Override
@@ -68,25 +81,22 @@ public class DepartmentDaoJDBC implements DepartmentDao {
 	public List<Department> findAll() {
 		PreparedStatement st = null;
 		ResultSet rs = null;
-		
+
 		try {
-			st = conn.prepareStatement(
-					"select * from department order by id");
-			
+			st = conn.prepareStatement("select * from department order by id");
+
 			rs = st.executeQuery();
-			
+
 			List<Department> list = new ArrayList<Department>();
-			
-			while(rs.next()) {
+
+			while (rs.next()) {
 				Department obj = instantiateDepartment(rs);
 				list.add(obj);
 			}
 			return list;
-		}
-		catch (SQLException e) {
+		} catch (SQLException e) {
 			throw new DbException(e.getMessage());
-		}
-		finally {
+		} finally {
 			DB.closeStatement(st);
 			DB.closeResultSet(rs);
 		}
